@@ -1,0 +1,148 @@
+{
+  "main": {
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects"
+  },
+  "footer": {
+    "my-setup": "My dotfiles",
+    "sourcecode": "Source code",
+    "contact": "Contact",
+    "analytics": "Analytics",
+    "sitemap": "Sitemap",
+    "powered": "Powered by ",
+    "and": "and ",
+    "hosted": "Hosted on "
+  },
+  "index-page": {
+    "title": "AI Software Engineer and Student at",
+    "intro": "Passionate about crafting innovative digital experiences. Learning about mobile development, Next.js, and on-device AI.",
+    "posts": {
+      "read-all": "Read all posts",
+      "1": {
+        "title": "Playing Super Mario with a PPO Reinforcement Learning Agent",
+        "slug": "super-mario-rl"
+      },
+      "2": {
+        "title": "How to Deploy a Fullstack Web App on Vercel?",
+        "slug": "vercel-deployment"
+      }
+    }
+  },
+  "about-page": {
+    "text-1": "Hey, I'm Dario. 👋🏻 I'm {age} years \nold and come from Singapore. I'm currently studying at Singapore Polytechnic for a diploma in Applied AI & Analytics. In my free time, I enjoy visiting new cafe spots,\ntravel or spend time with my friends and family.",
+    "text-2": "I've been playing around with computers since I was young, and I first got into programming during school. Right now, I'm interning at DSTA as an AI software engineer, which has been an awesome opportunity to dive deep into real-world AI projects.",
+    "text-3": "I'm learning Kotlin and have a strong passion for UI/UX and design. In the future, I plan to build a tech startup 💻 that combines AI, web development, and data analytics to create impactful solutions. ",
+    "website": "Website",
+    "links": {
+      "title": "Links",
+      "text": "Check out my pages across the web below.",
+      "github": "This is where I host and collaborate on code projects. Hit me up for a collab!",
+      "instagram": "Follow for a sneak peek into my daily life and interests.",
+      "medium": "Join my blogging journey as I share thoughts on tech, programming, and more.",
+      "linkedin": "Let's connect professionally and expand our network together!"
+    },
+    "tools": {
+      "title": "Tech Stack",
+      "text": "These are some of the software tools I use almost daily - including languages, frameworks, IDEs and various softwares.",
+      "tailwind": "When it comes to CSS, I prefer to use TailwindCSS. It is a great tool for styling your website really quickly and easily.",
+      "next": "A powerful React framework that allows for server-side rendering and static site generation, enabling me to build highly performant web applications.",
+      "androidstudio": "The most seamless way to develop Android applications. I use it for all of my Android projects, benefiting from its integrated development environment.",
+      "vscode": "Visual Studio Code is the text editor I reach for the most often, given the wide range of extensions it provides."
+    },
+
+    "timeline": {
+      "title": "Timeline",
+      "learn-more": "Learn more about DSTA",
+      "learn-more2": "Learn more about Tracesafe",
+      "learn-more3": "Learn more about better.sg",
+      "1": {
+        "date": "August 2022",
+        "title": "IT System Support Intern at Tracesafe Asia Pacific",
+        "description": "My first internship! I contributed to the development of MOH iOT Sensor Gateways during COVID-19. I managed and cleaned huge amounts of technical data & conducted SIM card testing for device functionality."
+      },
+      "2": {
+        "date": "October 2023",
+        "title": "Machine Learning Engineer at Project Checkmate",
+        "description": "I built an NLP classification model using Support Vector Machine (SVM) to filter spam and scam text messages for Project CheckMates. Additionally, I worked with Google Cloud BigQuery to retrieve and analyze stored and processed data for this project."
+      },
+      "3": {
+        "date": "March 2024",
+        "title": "AI Software Engineer Intern at DSTA",
+        "description": "I led the design and integration of AI systems into mobile apps for the C3 Division, solo-developing a full-stack mobile app in Kotlin while diving into UI/UX, system optimization, and rigorous testing. I implemented multi-modal AI workflows and conducted in-depth research on modular software and AI architectures, delivering professional proposals for optimal implementation strategies."
+      }
+    }
+  },
+  "404": {
+    "title": "Page not found",
+    "description": "Why show a generic 404 when I can make it sound mysterious? It seems \nyou've found something that used to exist, or you spelled \nsomething wrong. I'm guessing you spelled something wrong. Can \nyou double check that URL?",
+    "return-home": "Return Home"
+  },
+  "error": {
+    "title": "Something went wrong",
+    "description": "I'm sorry, but something went wrong. Please try again later.",
+    "return-home": "Return home"
+  },
+  "blog": {
+    "description": "Started writing online in 2023, mostly about AI and a mix of other cool stuff. I've got two blog posts up so far. Stay tuned for more blogs coming your way! 😜",
+    "no-posts": "No posts found.",
+    "all-posts": "All Posts",
+    "search": "Search...",
+    "filter": {
+      "by-name": "By name",
+      "by-tag": "By tag"
+    },
+    "views": "views",
+    "reading-time": "{minutes} min read"
+  },
+  "guestbook": {
+    "title": "Guestbook",
+    "login": "Sign in with ",
+    "logout": "Sign out",
+    "form": {
+      "title": "Sign the Guestbook",
+      "description": "Share a message for a future visitor of my site.",
+      "input": "Your message...",
+      "submit": "Send",
+      "info": "Your information is only used to display your name."
+    },
+    "success": "Hooray! Thanks for signing my Guestbook.",
+    "error": "Please enter a message.",
+    "delete": "Delete"
+  },
+  "dashboard": {
+    "unauthorized": "You are not authorized to view this page.",
+    "logout": "Sign out",
+    "logged-in": "Logged in as",
+    "stats": "Stats",
+    "top-tracks": "Top Spotify Tracks",
+    "metrics": {
+      "blog-views": "Blog views",
+      "guestbook-entries": "Guestbook entries",
+      "posts-count": "Amount of all posts (EN)"
+    }
+  },
+  "projects": {
+    "not-found": "No projects found",
+    "see-more": "See all projects",
+    "all-repos": "All Repositories"
+  },
+  "not-playing": "Not Playing",
+  "command-palette": {
+    "settings": "Settings",
+    "socials": "Socials",
+    "switch-theme": "Switch theme",
+    "switch-language": "Change language (de)",
+    "search-placeholder": "Search...",
+    "no-results": "No results"
+  },
+  "stats": {
+    "title": "My GitHub Stats",
+    "stars": "Total Stars Earned",
+    "commits": "Total Commits",
+    "prs": "Total PRs",
+    "issues": "Total Issues",
+    "contributed": "Contributed to",
+    "top-languages": "Top Languages"
+  }
+}

@@ -1,0 +1,89 @@
+---
+title: 'How to Deploy a Fullstack Web App on Vercel?'
+publishedAt: '2023-08-20'
+summary: 'Vercel offers a streamlined, cost-effective solution for deploying fullstack web applications, making the process quick and hassle-free.'
+language: 'en'
+tags:
+  - Vercel
+  - Next.js
+  - PlanetScale
+---
+
+<Image
+  alt={`Vercel Logo`}
+  src={`/images/vercel-deployment/vercel-logo.png`}
+  width={1672}
+  height={979}
+  priority
+/>
+
+## Table of Contents 📃
+
+- Creating a Full-Stack App with Next.js
+- Database Service : PlanetScale
+- Helpful Libraries
+- Deploy your Application for free on Vercel
+- Conclusion
+
+## Creating a Full-Stack App with Next.js
+
+[Next.js](https://nextjs.org/) has emerged as one of the best frameworks in recent years, providing a complete solution for building fast and scalable fullstack web applications. Whether you're building a static site or a dynamic web app, Next.js has you covered with features like:
+
+- **Static Site Generation (SSG)** for fast, pre-rendered pages,
+- **Server-Side Rendering (SSR)** for dynamic content,
+- **API routes**, allowing you to build backend endpoints directly in your app,
+- **Built-in image optimization**, which reduces the size of images served to the client automatically.
+
+Thanks to its modern architecture and seamless integration with tools like React, Next.js is a highly performant solution, ideal for both small and large-scale projects. With the built-in optimizations, you don't need external plugins to get top performance.
+
+If you're already familiar with Next.js, you might want to explore the [T3-Stack](https://github.com/t3-oss/create-t3-app), a boilerplate that integrates Next.js with tools like Prisma (an ORM), NextAuth (authentication), and Tailwind CSS (styling). The T3-Stack provides all the necessary features you need, from authentication to database connections, and speeds up the development process.
+
+## Database Service : PlanetScale
+
+<Callout emoji="⚠️">
+  Unfortunately, PlanetScale is not free anymore. The free tier has been removed. You can use
+  [Vercel's Database Integrations](https://vercel.com/integrations) to get a
+  free database.
+</Callout>
+
+[PlanetScale](https://planetscale.com/)  is a MySQL-compatible serverless database platform that provides:
+
+- **Easy branching**: Similar to Git, you can create database branches to work on updates without affecting your production database.
+- **Auto-scaling**: Handle database loads seamlessly, making it ideal for applications of all sizes.
+- **Serverless**: Forget about managing servers—PlanetScale takes care of it for you.
+
+Despite PlanetScale no longer offering a free tier, its features make it a great choice for professional applications. It integrates well with Next.js, and you can also use it with popular ORMs like Prisma, which is a part of the T3-Stack.
+
+**Pro Tip**: If you're working on a smaller project or a personal app, take a look at Vercel's free database integrations, such as with [MongoDB](https://www.mongodb.com/)  or [Supabase](https://supabase.com/) . These integrations provide free-tier databases that are perfect for lightweight applications.
+
+## Helpful Libraries
+
+When building fullstack applications with Next.js, you’ll likely need some essential libraries to cover common functionality like authentication, styling, and data management. Here are some key tools you should consider:
+
+- [Prisma](https://www.prisma.io/) - A database data-driven ORM
+- [Tailwind](https://tailwindcss.com/) - An easy to use utility-first CSS framework
+- [NextAuth](https://next-auth.js.org/) - An flexible and secure authentication provider
+- [SWR](https://swr.vercel.app/) - A lightweight react hook for data fetching
+
+These libraries are often the backbone of modern fullstack applications, helping you create apps that are secure, scalable, and maintainable.
+
+## Deploy your Application for free on Vercel
+
+Once your app is built, deploying it to production is the next step. Vercel offers a seamless, fast, and free deployment solution, especially for applications built with Next.js.
+
+How to Deploy:
+
+1. **Create an Account**: Head over to [Vercel's website](https://vercel.com/) and create a free account.
+2. **Connect Your Repository**: Link your GitHub, GitLab, Bitbucket repository, or the [Vercel CLI](https://vercel.com/docs/cli) to Vercel. If you're using Next.js, Vercel will automatically detect the configuration and optimize it for deployment.
+3. **Deploy in Minutes**: With just a few clicks, you can deploy your app to Vercel's servers, with automatic setup for SSL, serverless functions, and more.
+4. **Integrations**: Vercel offers numerous [integrations](https://vercel.com/integrations), from environment variable management to database solutions, making it easy to extend your app.
+
+Whether you're building a personal project or a commercial product, Vercel simplifies deployment so you can focus on developing the app.
+
+## Conclusion 🚀
+
+Building and deploying a fullstack web app has never been easier, thanks to the powerful ecosystem surrounding Next.js and Vercel. 
+
+With tools like Prisma for database management, Tailwind CSS for styling, and NextAuth for authentication, you can create production-ready applications quickly and efficiently.
+
+Get started today and bring your ideas to life!

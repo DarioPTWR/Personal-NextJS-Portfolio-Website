@@ -1,0 +1,154 @@
+---
+title: 'Playing Super Mario with a PPO Reinforcement Learning Agent'
+publishedAt: '2024-02-16'
+summary: 'A technical deep dive into how Proximal Policy Optimization (PPO) can be used to master gameplay in Super Mario.'
+language: 'en'
+tags:
+  - RL
+  - PPO
+  - AI 
+  - ML
+---
+
+<Image
+  alt={`Super Mario Gameplay`}
+  src={`/images/super-mario/super-mario.png`}
+  width={1672}
+  height={979}
+  priority
+/>
+
+## Table of Contents 📃
+
+- A Brief Overview
+- Related Works
+- Methodologies and Experiments
+  - Super Mario Environment
+  - Reward Function Design
+  - Data Preparation and Preprocessing
+  - Proximal Policy Optimization (PPO) Algorithm
+- Results and Discussion
+- Conclusion
+
+## A Brief Overview
+
+[Reinforcement Learning (RL)](https://en.wikipedia.org/wiki/Reinforcement_learning) is a fascinating domain within AI where agents learn optimal strategies to complete tasks through trial and error. One of the most effective algorithms in this field is [Proximal Policy Optimization (PPO)](https://openai.com/index/openai-baselines-ppo/), which balances the need to explore new strategies and exploit known successful ones.
+
+In this article, I will be exploring the use of PPO in creating an autonomous agent capable of playing Super Mario. By evaluating the performance of the PPO agent in navigating levels, avoiding obstacles, and maximizing rewards, the aim is to better understand its potential for broader applications like robotics and self-driving cars.
+
+## Related Works
+
+[Super Mario](https://en.wikipedia.org/wiki/Super_Mario) is a globally recognized video game developed by Nintendo. Its intricate level design and gameplay mechanics have attracted researchers looking to explore reinforcement learning in complex, dynamic environments.
+
+One significant work is "Deep Reinforcement Learning for Super Mario Bros." by Schejbal, O., which employed DQN, Enhanced DQN, Double-DQN, A3C, and TD3. This study found that only a custom A3C-based agent architecture could reach the winning flag at the end of training due to its simultaneous multi-agent learning approach.
+
+<Image
+  alt={`Super Mario Research`}
+  src={`/images/super-mario/super-mario-research.png`}
+  width={1672}
+  height={979}
+  priority
+/>
+
+Another key paper is ["Experience-Driven PCG via Reinforcement Learning: A Super Mario Bros Study" by Shu, Liu, and Yannakakis](https://arxiv.org/pdf/2106.15877.pdf), which introduced the ED(PCG)RL framework for procedural content generation in video games. This method dynamically generates levels, allowing for adaptable and personalized gameplay experiences based on player interactions.
+
+Building on these works, I will explore how PPO can perform in a similarly dynamic and unpredictable environment like Super Mario.
+
+## Methodologies and Experiments
+
+### **A. Super Mario Environment**
+
+The Super Mario environment is adapted from the work by Liao et al. and implemented using Python’s PyTorch and [OpenAI’s Gym Environment](https://github.com/Farama-Foundation/Gymnasium), as demonstrated in Sohum Padhye’s Medium article.
+
+<Image
+  alt={`Super Mario Demo`}
+  src={`/images/super-mario/super-mario-demo.png`}
+  width={1672}
+  height={672}
+  priority
+/>
+
+In this environment, Mario (the agent) is tasked with moving through the level, collecting power-ups, defeating enemies, and reaching the finish line. The action space includes movements such as running and jumping in various directions. **However, since my primary objective was just to complete the level, movements to the left were restricted to enable faster training.**
+
+The state space includes Mario’s position, enemy positions, power-up locations, and Mario’s current score. The environment dynamically changes as Mario moves, creating new challenges and obstacles for the agent to navigate.
+
+### **B. Reward Function Design**
+
+Defining an appropriate reward function is crucial for the success of reinforcement learning. The reward function for Mario is designed to encourage rightward movement, quick completion of the level, and survival. The reward function is composed of **three** elements:
+
+1. **Velocity (v)**: Instantaneous velocity calculated as the difference in Mario's position across frames `(x1 - x0)`.
+2. **Clock (c)**: The difference in the game clock between frames `(c0 - c1)`, with penalties for taking too long.
+3. **Death Penalty (d)**: A penalty of -15 when Mario dies, reinforcing the importance of survival.
+
+The total reward `r` is calculated as:
+
+```bash
+r = v + c + d
+```
+
+Where `v` is positive for moving right and penalized for moving left or standing still, `c` penalizes inaction, and `d` heavily penalizes death.
+
+The reward is clipped between -15 and 15 to maintain consistency and prevent extreme reward values from skewing training.
+
+### **C. Data Preparation and Preprocessing**
+
+The environment data comes from the `SuperMarioBros-v0` OpenAI Gym environment. To streamline data processing and ensure efficient learning, the environment undergoes several preprocessing steps:
+
+- **Grayscale Conversion**: Simplifies the input data while preserving essential visual features.
+- **Frame Stacking**: Combines the last four frames to provide the agent with temporal context.
+
+<Callout emoji="⚠️">
+  Before initializing the environment, first install it via `pip`: **pip install gym-super-mario-bros**
+</Callout>
+
+The following code initializes and preprocesses the environment:
+
+```bash
+import gym_super_mario_bros
+from gym.wrappers import GrayScaleObservation
+from stable_baselines3 import PPO
+from stable_baselines3.common.vec_env import DummyVecEnv, VecFrameStack
+from nes_py.wrappers import JoypadSpace
+
+env = gym_super_mario_bros.make('SuperMarioBros-v0')
+env = JoypadSpace(env, SIMPLE_MOVEMENT)
+env = GrayScaleObservation(env, keep_dim=True)
+env = DummyVecEnv([lambda: env])
+env = VecFrameStack(env, 4, channels_order='last')
+```
+
+### **D. Proximal Policy Optimization (PPO) Algorithm**
+
+PPO is designed to maintain trust region constraints during training, enabling stable and reliable policy updates. It falls under the category of policy gradient methods, which directly optimize the policy by adjusting parameters to maximize expected rewards.
+
+The PPO algorithm uses a clipped objective function to ensure policy changes remain within a safe range, preventing drastic updates that could destabilize learning. By taking conservative steps during training, PPO can gradually improve the policy and converge more efficiently.
+
+The PPO model is implemented using the `stable-baselines3` library, as shown below:
+
+```bash
+from stable_baselines3 import PPO
+PPOmodel = PPO('CnnPolicy', env, verbose=1, tensorboard_log=LOG_DIR, learning_rate=0.000003, n_steps=512)
+PPOmodel.learn(total_timesteps=300000, callback=callback)
+```
+
+**Pro Tip**: To improve the model's performance in completing a Super Mario level, feel free to experiment with increasing the number of timesteps, and adjust the `learning_rate` and `n_steps` accordingly.
+
+## Results and Discussion
+
+After training the PPO agent for **300,000 timesteps**, I evaluated its performance based on several key metrics, including policy gradient loss, value loss, and explained variance.
+
+- **Policy Gradient Loss**: -0.0565 (indicating effective learning)
+- **Explained Variance**: -0.126 (indicating room for improvement in value function prediction)
+- **Value Loss**: 0.128 (indicating accurate value predictions)
+- **Learning Rate**: 3e-06 (indicating fine-tuning during training)
+- **Entropy Loss**: -0.803 (indicating the policy is becoming deterministic)
+
+While the agent showed improvement in navigating the level and maximizing rewards, additional training may be required to address the low explained variance and further optimize the value function.
+
+## Conclusion 🚀
+
+I hope this has helped you in exploring the implementation of Proximal Policy Optimization (PPO) for autonomous gameplay in Super Mario. Despite some challenges in value function prediction, PPO proved effective in enabling the agent to navigate through levels and maximize rewards.
+
+With further tuning and extended training, PPO holds great potential for mastering more complex and dynamic environments. Its stability and adaptability make it a valuable tool in both gaming and broader applications like robotics and autonomous vehicles.
+
+Happy coding! ❤
