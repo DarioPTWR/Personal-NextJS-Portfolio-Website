@@ -99,7 +99,7 @@ export default function CommandPalette({
       {
         title: t('footer.sourcecode'),
         action: Actions.Router,
-        args: 'https://github.com/alex289/Portfolio',
+        args: 'https://github.com/DarioPTWR/Personal-NextJS-Portfolio-Website',
         icon: <Code2 strokeWidth={1.5} className="mr-2 mt-[0.12rem] h-5 w-5" />,
       },
       {
