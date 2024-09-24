@@ -1,10 +1,8 @@
-![cover](https://repository-images.githubusercontent.com/386759878/da75b7f3-2f50-4797-a36a-0d6dd8f7c6b3)
+![cover](public/images/thumbnail/thumbnail.png)
 
-# Portfolio
+## 🎓 Vercel Portfolio Website
 
-My own personal portfolio website
-
-Inspired by [leerob](https://github.com/leerob/leerob.io)
+This is version 2 of my original portfolio website, leveraging on Next.js, Drizzle, TypeScript and Vercel for deployment.
 
 - **Framework**: [Next.js](https://nextjs.org/)
 - **Database**: [Vercel Postgres](https://vercel.com)
@@ -19,5 +17,5 @@ Inspired by [leerob](https://github.com/leerob/leerob.io)
 - `src/lib/*` - Short for "library", a collection of helpful utilities or code for external services.
 - `src/app/*` - The actual pages.
 - `public/*` - Static assets including fonts and images.
-- `src/styles/*` - A small amount of global styles. I'm mostly using vanilla Tailwind CSS.
-- `src/messages/*` - All translations objects
+- `src/styles/*` - Global CSS styles can be found here.
+- `src/messages/*` - All translations objects (Only `en.json` is currently used).
