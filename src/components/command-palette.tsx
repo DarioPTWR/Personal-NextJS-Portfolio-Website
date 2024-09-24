@@ -185,7 +185,7 @@ export default function CommandPalette({
   }
 
   return (
-    <Transition show={!!isOpen ?? false} appear>
+    <Transition show={!!isOpen} appear>
       <Dialog
         as="div"
         onClose={() => setIsOpen(false)}
